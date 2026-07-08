@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JCPZ Sports Club - Official Site</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; }
+    header { background:#1e3d59; color:#fff; padding:20px; display:flex; align-items:center; justify-content:center; }
+    header img { height:80px; margin-right:20px; }
+    nav { background:#16324f; padding:15px; text-align:center; }
+    nav a { color:#fff; margin:0 20px; text-decoration:none; font-weight:bold; cursor:pointer; }
+    nav a:hover { color:#ffcc00; }
+    section { padding:30px; }
+    .hero { background:#eee; padding:50px; text-align:center; }
+    .hero h1 { font-size:50px; color:#1e3d59; }
+    .hero p { font-size:20px; }
+    .card { background:#fff; padding:25px; margin:20px; border-radius:10px; box-shadow:0 0 12px rgba(0,0,0,0.1); }
+    footer { background:#1e3d59; color:#fff; text-align:center; padding:20px; margin-top:30px; }
+    iframe { width:100%; height:500px; border:none; margin-top:20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Premium Logo -->
+    <img src="logo.png" alt="JCPZ Sports Club Logo">
+    <div>
+      <h1>🏆 JCPZ Sports Club</h1>
+      <p>Sports for Unity & Strength</p>
+    </div>
+  </header>
+
+  <nav>
+    <a onclick="openAI()">AI Help</a>
+    <a onclick="openGames()">Games</a>
+    <a onclick="openHealth()">Health</a>
+    <a onclick="openAbout()">About</a>
+    <a onclick="openEvents()">Events</a>
+    <a onclick="openGallery()">Gallery</a>
+    <a onclick="openContact()">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Welcome to JCPZ Sports Club</h1>
+    <p>Official site of our club, founded by Ariz Alhan Shaon.</p>
+  </section>
+
+  <section id="dynamicContent">
+    <div class="card">
+      <h2>Club Information</h2>
+      <p>📅 Birth Date: 01 January 2025</p>
+      <p>👤 Owner: Ariz Alhan Shaon</p>
+      <p>👤 Vice Chairman (VC): Ariz Alhan Shaon</p>
+      <p>👤 Pro VC: MD Junayed</p>
+      <p>📞 Phone: <a href="tel:01735703790">01735703790</a></p>
+      <p>✉️ Email: <a href="mailto:arzshaon@gmail.com">arzshaon@gmail.com</a></p>
+      <p>📍 Location: CUET, Chattogram, Bangladesh</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 JCPZ Sports Club. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function openAI() {
+      document.getElementById("dynamicContent").innerHTML = `
+        <div class="card">
+          <h2>AI Help</h2>
+          <iframe src="https://copilot.microsoft.com" allowfullscreen></iframe>
+        </div>`;
+    }
+
+    function openGames() {
+      document.getElementById("dynamicContent").innerHTML = `
+        <div class="card">
+          <h2>200+ Online Games</h2>
+          <iframe src="https://www.crazygames.com/" allowfullscreen></iframe>
+        </div>`;
+    }
+
+    function openHealth() {
+      document.getElementById("dynamicContent").innerHTML = `
+        <div class="card">
+          <h2>100+ Health Tips Videos</h2>
+          <iframe src="https://www.youtube.com/embed/videoseries?list=PL8dPuuaLjXtOeEc9ME62zTfqc0h6cX9yQ" allowfullscreen></iframe>
+        </div>`;
+    }
+
+    function openAbout() {
+      document.getElementById("dynamicContent").innerHTML = `
+        <div class="card">
+          <h2>About JCPZ Sports Club</h2>
+          <p>We promote Football, Cricket, Badminton, Volleyball and organize tournaments, training sessions, and community events.</p>
+        </div>`;
+    }
+
+    function openEvents() {
+      document.getElementById("dynamicContent").innerHTML = `
+        <div class="card">
+          <h2>Upcoming Events</h2>
+          <ul>
+            <li>⚽ Football Tournament – August 2026</li>
+            <li>🏏 Cricket Championship – September 2026</li>
+            <li>🏸 Badminton Friendly Match – October 2026</li>
+          </ul>
+        </div>`;
+    }
+
+    function openGallery() {
+      document.getElementById("dynamicContent").innerHTML = `
+        <div class="card">
+          <h2>Gallery</h2>
+          <p>Photos and videos of our players, matches, and events will be showcased here.</p>
+        </div>`;
+    }
+
+    function openContact() {
+      document.getElementById("dynamicContent").innerHTML = `
+        <div class="card">
+          <h2>Contact Us</h2>
+          <p>📞 Phone: 01735703790</p>
+          <p>✉️ Email: arzshaon@gmail.com</p>
+        </div>`;
+    }
+  </script>
+</body>
+</html>jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
